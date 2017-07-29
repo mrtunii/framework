@@ -2,7 +2,9 @@
 
 /**
 *   Front Controller
-*   
+*
+*   @author Otto Mamestsarashvili
+*
 *   PHP version 7.1
 */
 
@@ -19,16 +21,7 @@ $router = new Router();
 
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('posts', ['controller' => 'Post', 'action' => 'index']);
-$router->add('posts/new', ['controller' => 'Post', 'action' => 'new']);
-
-
-$url = $_SERVER['QUERY_STRING'];
-
-if($router->match($url)) {
-    echo '<pre>';
-    var_dump($router->getParams());
-    echo '</pre>';
-
-} else {
-    echo '404 Bitch';
-}
+$router->add('{controller}/{action}');
+//$router->add('posts/new', ['controller' => 'Post', 'action' => 'new']);
+$router->add('admin/{action}/{controller}');
+$router->add('{controller}/{id:\d+}/{action}');
