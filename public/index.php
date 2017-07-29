@@ -8,6 +8,7 @@
 *   PHP version 7.1
 */
 
+require '../App/Controllers/Posts.php';
 
 /**
  *
@@ -25,3 +26,7 @@ $router->add('{controller}/{action}');
 //$router->add('posts/new', ['controller' => 'Post', 'action' => 'new']);
 $router->add('admin/{action}/{controller}');
 $router->add('{controller}/{id:\d+}/{action}');
+
+
+
+$router->dispatch($_SERVER['QUERY_STRING']);

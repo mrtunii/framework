@@ -68,6 +68,63 @@ class Router
     }
 
     /**
+     * Dispach the route
+     * execute controller function
+     *
+     *
+     * @param $url
+     */
+    public function dispatch($url)
+    {
+        if($this->match($url)) {
+            $controller = $this->params['controller'];
+            $controller = $this->convertToStudlyCaps($controller);
+
+            if(class_exists($controller)) {
+                $controller_object = new $controller();
+
+                $action = $this->params['action'];
+                $action = $this->convertToCamelCase($action);
+
+                if(is_callable([$controller_object,$action])) {
+                    $controller_object->$action();
+                } else {
+                    echo "Method $action (in controller $controller) not found !";
+                }
+            } else {
+                echo "Controller class $controller not found !";
+            }
+        } else {
+            echo '404 Bitch';
+        }
+    }
+
+    /**
+     * Convert the string with hyphens to StudlyCaps
+     * e.g post-authors => PostAuthors
+     *
+     * @param $string
+     * @return mixed
+     */
+    public function convertToStudlyCaps($string)
+    {
+        return str_replace(' ','',ucwords(str_replace('-',' ',$string)));
+    }
+
+    /**
+     * Convert the string with hyphens to camelCase
+     * e.g post-author => postAuthor
+     *
+     * @param $string
+     * @return string
+     */
+    public function convertToCamelCase($string)
+    {
+        return lcfirst($this->convertToStudlyCaps($string));
+    }
+
+
+    /**
      * Get all parameters
      * @return array
      */
