@@ -8,6 +8,8 @@ namespace App\Controllers;
  * @package App\Controllers
  */
 
+use Core\View;
+
 class Home extends \Core\BaseController
 {
     /**
@@ -15,11 +17,12 @@ class Home extends \Core\BaseController
      */
     public function before()
     {
-        echo '(before)';
+//        echo '(before)';
     }
     public function indexAction()
     {
-        echo 'hello from home controller';
+        View::render('Home/index.php');
+//        echo 'hello from home controller';
     }
 
 }
