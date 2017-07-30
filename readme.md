@@ -1,4 +1,4 @@
-## It's just simple framework
+# It's just simple framework
 
 ## ეს არის ძალიან მარტივი framework, რომელსაც ვაწყობ PHP-ს უფრო ღრმად შესასწავლად.
 
