@@ -21,7 +21,9 @@ class Home extends \Core\BaseController
     }
     public function indexAction()
     {
-        View::render('Home/index.php');
+        View::render('Home/index.html', [
+            'name' => 'otto'
+        ]);
 //        echo 'hello from home controller';
     }
 
