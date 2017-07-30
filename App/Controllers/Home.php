@@ -10,8 +10,14 @@ namespace App\Controllers;
 
 class Home extends \Core\BaseController
 {
-
-    public function index()
+    /**
+     * Before filter
+     */
+    public function before()
+    {
+        echo '(before)';
+    }
+    public function indexAction()
     {
         echo 'hello from home controller';
     }

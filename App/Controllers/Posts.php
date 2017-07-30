@@ -19,7 +19,7 @@ class Posts extends  \Core\BaseController
      *
      * @return void
      */
-    public function index()
+    public function indexAction()
     {
         echo 'hello world';
         echo "<p> Parameters <pre>" .
@@ -32,7 +32,7 @@ class Posts extends  \Core\BaseController
      *
      * @return void
      */
-    public function addNew()
+    public function addNewAction()
     {
         echo 'here you can add post';
     }
