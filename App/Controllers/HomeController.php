@@ -8,9 +8,10 @@ namespace App\Controllers;
  * @package App\Controllers
  */
 
+use Core\BaseController as Controller;
 use Core\View;
 
-class Home extends \Core\BaseController
+class HomeController extends Controller
 {
     /**
      * Before filter
@@ -21,10 +22,13 @@ class Home extends \Core\BaseController
     }
     public function indexAction()
     {
-        View::render('Home/index.html', [
-            'name' => 'otto'
+        View::render('Home/index.html.twig', [
+            'name' => 'otto',
+            'skills' => [
+              'gaming',
+              'programming'
+            ]
         ]);
-//        echo 'hello from home controller';
     }
 
 }

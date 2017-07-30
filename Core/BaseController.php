@@ -22,7 +22,6 @@ abstract class BaseController
     /**
      * BaseController constructor.
      *
-     *
      * @param $route_params
      */
     public function __construct($route_params)

@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Hello from first view</title>
+</head>
+
+<body>
+<h1>All Posts</h1>
+<ul>
+    {% for post in posts %}
+        <li>{{  post.title }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

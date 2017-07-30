@@ -5,5 +5,10 @@
 
 <body>
 <h1>{{ name }}</h1>
+<ul>
+    {% for skill in skills %}
+        <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

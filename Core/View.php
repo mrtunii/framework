@@ -25,11 +25,13 @@ class View
      */
     public static function render($template, $args = [])
     {
-        static  $twig = null;
-        if($twig === null) {
+        $template = str_replace('.', '/', $template);
+        $template = $template . '.html.twig';
+        static $twig = null;
+        if ($twig === null) {
             $loader = new \Twig_Loader_Filesystem('../App/Views');
             $twig = new \Twig_Environment($loader, []);
         }
-        echo $twig->render($template,$args);
+        echo $twig->render($template, $args);
     }
 }
