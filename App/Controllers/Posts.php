@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 /**
  *  Test Posts Controller
  * @author Otto Mamestsarashvili
@@ -8,7 +10,8 @@
  *
  */
 
-class Posts {
+class Posts extends  \Core\BaseController
+{
 
     /**
      * Show the index page
@@ -18,7 +21,10 @@ class Posts {
      */
     public function index()
     {
-        echo 'hello from index ';
+        echo 'hello world';
+        echo "<p> Parameters <pre>" .
+            htmlspecialchars(print_r($this->route_params  , true)) .
+            "</pre></p>";
     }
 
     /**
