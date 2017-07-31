@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Posts;
+use Core\BaseController;
 use Core\View;
 
 /**
@@ -12,8 +13,7 @@ use Core\View;
  * PHP version 7.1
  *
  */
-
-class PostsController extends  \Core\BaseController
+class PostsController extends  BaseController
 {
 
     /**
