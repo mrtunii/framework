@@ -23,27 +23,7 @@ class Router
      */
     protected $params = [];
 
-    /**
-     * Add route to routing table
-     * @param $route *The route URL
-     * @param $params *parameters (controller,action, etc)
-     */
-    public function add($route, $params = [])
-    {
 
-        //Convert the route to regular expression: escape forward slashes
-        $route = preg_replace('/\//', '\\/', $route);
-
-        // Convert variables e.g {controller}
-        $route = preg_replace('/\{([a-z]+)\}/', '(?P<\1>[a-z-]+)', $route);
-
-        $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
-
-        // Add start and end delimiters, add case insensitive flag
-        $route = '/^' . $route . '$/i';
-
-        $this->routes[$route] = $params;
-    }
 
     /**
      * Match the route to the routes in routing table, setting the params property
@@ -69,6 +49,29 @@ class Router
         return false;
     }
 
+
+    /**
+     * Add route to routing table
+     * @param $route *The route URL
+     * @param $params *parameters (controller,action, etc)
+     */
+    public function add($route, $params = [])
+    {
+
+        //Convert the route to regular expression: escape forward slashes
+        $route = preg_replace('/\//', '\\/', $route);
+
+        // Convert variables e.g {controller}
+        $route = preg_replace('/\{([a-z]+)\}/', '(?P<\1>[a-z-]+)', $route);
+
+        $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
+
+        // Add start and end delimiters, add case insensitive flag
+        $route = '/^' . $route . '$/i';
+
+        $this->routes[$route] = $params;
+    }
+
     /**
      * Dispach the route
      * execute controller function
@@ -92,7 +95,7 @@ class Router
                 $action = $this->convertToCamelCase($action);
 
                 if (is_callable([$controller_object, $action])) {
-                    $controller_object->$action();
+                    $controller_object->$action($this->params['id']);
                 } else {
                     echo "Method $action (in controller $controller) not found !";
                 }

@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Controllers;
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-use App\Models\Post;
+
+use App\Models\Posts;
 use Core\View;
 
 /**
@@ -25,10 +24,20 @@ class PostsController extends  \Core\BaseController
      */
     public function indexAction()
     {
-       $posts = Post::all();
+       $posts = Posts::all();
+
        View::render('post.show',[
           'posts' => $posts
        ]);
+    }
+
+
+    public function showAction($id)
+    {
+       $post = Posts::find($id);
+
+       var_dump($post);
+       die;
     }
 
 }
